@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    locale: en
+    env(SYMFONY_SECRET): secret_value_for_symfony_demo_application
+    env(SYMFONY_LOG): '%kernel.logs_dir%/%kernel.environment%.log'
+    database_host: db
+    database_port: 3306
+    database_name: symfony
+    database_user: symfony
+    database_password: password
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null

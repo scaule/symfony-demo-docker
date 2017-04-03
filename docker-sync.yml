@@ -1,0 +1,13 @@
+# docker-sync.yml
+version: "2"
+
+options:
+  compose-file-path: './docker-compose.yml'
+  verbose: true # make the whole sync verbose
+syncs:  
+# this name has to be unique and is used in docker-compose.yml as well
+  demo-sync: 
+    src: './app' # the directory on the host system
+    dest: '/var/www/html' # the directory on the container
+    sync_host_port: 10872 # unique port
+    sync_strategy: 'unison'

@@ -1,0 +1,38 @@
+# docker-compose.yml
+version: "2"  
+services: 
+    db:
+        image: mysql
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: password
+    php:
+        build: php-fpm
+        ports:
+            - 9000:9000 
+        volumes_from:
+            - container:demo-sync:rw
+        tty: true    
+        environment:
+            APPLICATION_ENV: dev        
+        links:
+            - db
+
+    nginx:
+        build: nginx
+        ports:
+            - 80:80
+            - 443:443
+        links:
+            - php
+        volumes_from:
+            - container:demo-sync:rw
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+volumes:
+    project-sync:
+        external: true

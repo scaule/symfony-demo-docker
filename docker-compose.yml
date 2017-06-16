@@ -1,5 +1,5 @@
 # docker-compose.yml
-version: "2"  
+version: "3"
 services: 
     db:
         image: mysql
@@ -14,8 +14,8 @@ services:
         build: php-fpm
         ports:
             - 9000:9000 
-        volumes_from:
-            - container:demo-sync:rw
+        volumes:
+            - demo-sync:/var/www/html:nocopy
         tty: true    
         environment:
             APPLICATION_ENV: dev        
@@ -29,10 +29,9 @@ services:
             - 443:443
         links:
             - php
-        volumes_from:
-            - container:demo-sync:rw
         volumes:
+            - demo-sync:/var/www/html:nocopy
             - ./logs/nginx/:/var/log/nginx
 volumes:
-    project-sync:
+    demo-sync:
         external: true

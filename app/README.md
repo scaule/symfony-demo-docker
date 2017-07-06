@@ -1,83 +1,74 @@
-Symfony Demo Application
-========================
+eZ Publish 4 (Referred to as `legacy` in eZ Publish 5.x) [![Build Status](https://secure.travis-ci.org/ezsystems/ezpublish-legacy.png)](http://travis-ci.org/ezsystems/ezpublish-legacy)
+=======================================================
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop Symfony applications following the recommended best practices.
+What is eZ Publish?
+-------------------
+eZ Publish is a professional PHP application framework with advanced CMS
+(content management system) functionality. As a CMS it's most notable feature
+is its revolutionary, fully customizable and extendable content model. This is
+also what makes it suitable as a platform for general PHP development, allowing
+you to develop professional Internet applications fast.
 
-[![Build Status](https://travis-ci.org/symfony/symfony-demo.svg?branch=master)](https://travis-ci.org/symfony/symfony-demo)
+Standard CMS functionality, like news publishing, e-commerce and forums is
+already implemented and ready for you to use. Its stand-alone libraries can be
+used for cross-platform, database independent PHP projects.
 
-Requirements
-------------
+eZ Publish is database, platform and browser independent. Because it is
+browser based it can be used and updated from anywhere as long as you have
+access to the Internet.
 
-  * PHP 5.5.9 or higher;
-  * PDO-SQLite PHP extension enabled;
-  * and the [usual Symfony application requirements](http://symfony.com/doc/current/reference/requirements.html).
 
-If unsure about meeting these requirements, download the demo application and
-browse the `http://localhost:8000/config.php` script to get more detailed
-information.
+License
+-------
+eZ Publish is dual licensed. You can choose between the GNU GPL and the
+eZ Publish Professional License. The GNU GPL gives you the right to use, modify
+and redistribute eZ Publish under certain conditions. The GNU GPL license is
+distributed with the software, see the file LICENSE. It is also available at
+http://www.gnu.org/licenses/gpl.txt
+Using eZ Publish under the terms of the GNU GPL is free of charge.
+
+The eZ Publish Proprietary License gives you the right to use the source code
+for making your own commercial software. It allows you full protection of your
+work made with eZ Publish. You may re-brand, license and close your source
+code. eZ Publish is not free of charge when used under the terms of the
+Professional License. For pricing and ordering, please contact us at
+info@ez.no or visit http://ez.no/products/proprietary_license_options
+
+
+eZ Publish features
+-------------------
+- User defined content classes and objects
+- Advanced search engine
+- Role based permissions system
+- Advanced template engine
+- Version control
+- Professional workflow management
+- Multi-lingual support
+- Support for Unicode
+- Task system for easy collaboration
+- Image conversion and scaling
+- Database abstraction layer
+- XML handling and parsing library
+- SOAP communication library
+- Localisation and internationalisation libraries
+- Several other reusable libraries
+- SDK (software development kit)
+  and full documentation
+
 
 Installation
 ------------
+Read doc/INSTALL or go to http://doc.ez.no/eZ-Publish
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-First, install the [Symfony Installer](https://github.com/symfony/symfony-installer)
-if you haven't already. Then, install the Symfony Demo Application executing
-this command anywhere in your system:
+Issue tracker
+-------------
+Submitting bugs, improvements and stories is possible on https://jira.ez.no/browse/EZP.
+If you discover a security issue, please see how to responsibly report such issues on https://doc.ez.no/Security.
 
-```bash
-$ symfony demo
 
-# if you're using Windows:
-$ php symfony demo
-```
+Where to get more help
+----------------------
+eZ Publish documentation: http://doc.ez.no/eZ-Publish
+eZ Publish forums: http://share.ez.no/forums/
 
-If the `demo` command is not available, update your Symfony Installer to the
-most recent version executing the `symfony self-update` command.
-
-> **NOTE**
->
-> If you can't use the Symfony Installer, download and install the demo
-> application using Git and Composer:
->
->     $ git clone https://github.com/symfony/symfony-demo symfony_demo
->     $ cd symfony_demo/
->     $ composer install --no-interaction
-
-Usage
------
-
-There is no need to configure a virtual host in your web server to access the application.
-Just use the built-in web server:
-
-```bash
-$ cd symfony_demo/
-$ php bin/console server:run
-```
-
-This command will start a web server for the Symfony application. Now you can
-access the application in your browser at <http://localhost:8000>. You can
-stop the built-in web server by pressing `Ctrl + C` while you're in the
-terminal.
-
-> **NOTE**
->
-> If you want to use a fully-featured web server (like Nginx or Apache) to run
-> Symfony Demo application, configure it to point at the `web/` directory of the project.
-> For more details, see:
-> http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
-
-Troubleshooting
----------------
-
-The current Symfony Demo application uses Symfony 3.x version. If you want to
-use the legacy Symfony 2.8 version, clone the Git repository and checkout the
-`v0.8.4` tag, which is the last one compatible with Symfony 2.8:
-
-```bash
-$ git clone https://github.com/symfony/symfony-demo symfony_demo
-$ cd symfony_demo/
-$ git checkout tags/v0.8.4 -b v0.8.4
-$ composer install
-```

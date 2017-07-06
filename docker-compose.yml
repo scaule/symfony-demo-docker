@@ -2,7 +2,7 @@
 version: "2"  
 services: 
     db:
-        image: mysql
+        image: mysql:5.5.55
         ports:
             - 3306:3306
         environment:
@@ -11,11 +11,16 @@ services:
             MYSQL_USER: symfony
             MYSQL_PASSWORD: password
     php:
-        build: php-fpm
+        image: profideo/php-5.4.45-fpm
         ports:
             - 9000:9000 
-        volumes_from:
-            - container:demo-sync:rw
+            - 8983:8983
+        volumes:
+            - foncia2-sync:/var/www/html:nocopy
+            - /var/www/html/var/foncia/cache
+            - /var/www/html/var/foncia/logs
+            - /var/www/html/var/cache
+            - /var/www/html/var/logs
         tty: true    
         environment:
             APPLICATION_ENV: dev        
@@ -29,10 +34,9 @@ services:
             - 443:443
         links:
             - php
-        volumes_from:
-            - container:demo-sync:rw
         volumes:
+            - foncia2-sync:/var/www/html:nocopy
             - ./logs/nginx/:/var/log/nginx
 volumes:
-    project-sync:
+    foncia2-sync:
         external: true

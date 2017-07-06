@@ -1,77 +1,65 @@
 {
-    "name": "symfony/symfony-demo",
-    "license": "MIT",
-    "type": "project",
-    "description": "Symfony Demo Application",
-    "autoload": {
-        "psr-4": {
-            "AppBundle\\": "src/AppBundle/",
-            "CodeExplorerBundle\\": "src/CodeExplorerBundle/"
-        },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
-    },
-    "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" },
-        "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
+    "name":        "ezsystems/ezpublish-legacy",
+    "description": "eZ Publish LegacyStack (4.x)",
+    "homepage":    "http://share.ez.no",
+    "license":     "GPL-2.0",
+    "type":        "ezpublish-legacy",
+    "suggest": {
+        "php-64bit": "For support of more than 30 languages, a 64bit php installation on all involved prod/dev machines is required",
+        "ext-curl": "Curl provides better support for interacting with other servers, like downloading packages over SSL",
+        "ext-gd": "Unless you have ImageMagic installed GD is required for eZ Publish to be able to manipulate images",
+        "ext-mysqli": "Mysqli is the default database handler used by eZ Publish",
+        "ext-pcntl": "If you plan to take advantage of eZ Publish Async publishing feature, then pcntl extension is required",
+        "ezsystems/ezsi-ls": "ezsi would allow you to use Edge/Server Side Includes of blocks in templates",
+        "ezsystems/ezscriptmonitor-ls": "ezscriptmonitor makes it possible to better deal with long running bulk operations within eZ Publish",
+        "ezsystems/ezfind-ls": "ezfind is a Solr based advance search engine for eZ Publish with a lot more features then the built in search",
+        "ezsystems/eztags-ls": "eztags is a full tagging/taxonomy solution for eZ Publish replacing the simpler builtin ezkeywords datatype"
     },
     "require": {
-        "php"                                  : ">=5.5.9",
-        "ext-pdo_sqlite"                       : "*",
-        "doctrine/doctrine-bundle"             : "^1.6",
-        "doctrine/doctrine-cache-bundle"       : "^1.2",
-        "doctrine/doctrine-fixtures-bundle"    : "^2.2",
-        "doctrine/orm"                         : "^2.5",
-        "erusev/parsedown"                     : "^1.5",
-        "ezyang/htmlpurifier"                  : "^4.7",
-        "incenteev/composer-parameter-handler" : "^2.0",
-        "sensio/distribution-bundle"           : "^5.0",
-        "sensio/framework-extra-bundle"        : "^3.0.2",
-        "symfony/monolog-bundle"               : "^3.0",
-        "symfony/polyfill-apcu"                : "^1.0",
-        "symfony/swiftmailer-bundle"           : "^2.3",
-        "symfony/symfony"                      : "^3.2",
-        "twig/extensions"                      : "^1.3",
-        "twig/twig"                            : "^1.28 || ^2.0",
-        "white-october/pagerfanta-bundle"      : "^1.0"
+        "php": ">=5.3.3",
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "ext-mbstring": "*",
+        "ext-pcre": "*",
+        "ext-json": "*",
+        "ext-iconv": "*",
+        "ext-reflection": "*",
+        "ext-session": "*",
+        "ext-spl": "*",
+        "ext-simplexml": "*",
+        "ezsystems/ezpublish-legacy-installer": "*",
+        "ezsystems/ezautosave-ls": "~5.3",
+        "ezsystems/ezdemo-ls-extension": "~5.3",
+        "ezsystems/ezflow-ls-extension": "~5.3",
+        "ezsystems/ezgmaplocation-ls-extension": "~5.3",
+        "ezsystems/ezie-ls": "~5.3",
+        "ezsystems/ezmbpaex-ls": "~5.3",
+        "ezsystems/ezmultiupload-ls": "~5.3",
+        "ezsystems/ezodf-ls": "~5.3",
+        "ezsystems/ezprestapiprovider-ls": "~5.3",
+        "ezsystems/ezstarrating-ls-extension": "~5.3",
+        "ezsystems/ezwt-ls-extension": "~5.3",
+        "zetacomponents/archive": "~1.5",
+        "zetacomponents/authentication": "~1.4",
+        "zetacomponents/authentication-database-tiein": "~1.2",
+        "zetacomponents/cache": "~1.6",
+        "zetacomponents/configuration": "~1.4",
+        "zetacomponents/console-tools": "~1.7",
+        "zetacomponents/database": "~1.5",
+        "zetacomponents/debug": "~1.3",
+        "zetacomponents/event-log": "~1.5",
+        "zetacomponents/feed": "~1.4",
+        "zetacomponents/image-conversion": "~1.4",
+        "zetacomponents/mail": "~1.8",
+        "zetacomponents/mvc-tools": "~1.2",
+        "zetacomponents/mvc-authentication-tiein": "~1.1",
+        "zetacomponents/persistent-object": "~1.8",
+        "zetacomponents/signal-slot": "~1.2",
+        "zetacomponents/system-information": "~1.1",
+        "zetacomponents/webdav": "~1.1"
     },
     "require-dev": {
-        "dama/doctrine-test-bundle"            : "^1.0",
-        "friendsofphp/php-cs-fixer"            : "^2.0",
-        "phpunit/phpunit"                      : "^4.8 || ^5.0",
-        "sensio/generator-bundle"              : "^3.0",
-        "symfony/phpunit-bridge"               : "^3.0"
-    },
-    "scripts": {
-        "symfony-scripts": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
-        ],
-        "post-install-cmd": [
-            "@symfony-scripts"
-        ],
-        "post-update-cmd": [
-            "@symfony-scripts"
-        ]
-    },
-    "config": {
-        "platform": {
-            "php": "5.5.9"
-        },
-        "sort-packages": true
-    },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-bin-dir": "bin",
-        "symfony-var-dir": "var",
-        "symfony-web-dir": "web",
-        "symfony-tests-dir": "tests",
-        "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        }
+        "phpunit/phpunit": "3.7.*",
+        "zetacomponents/php-generator": "~1.1"
     }
 }
